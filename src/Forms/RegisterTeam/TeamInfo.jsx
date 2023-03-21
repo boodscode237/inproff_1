@@ -4,22 +4,21 @@ import Tilt from "react-parallax-tilt";
 const TeamInfos = ({ formValues, onChange} ) => {
     return(
         <Tilt>
-            <div className='container h-116 w-96 bg-white bg-opacity-10 rounded-2xl
+            <div className='container h-fit w-96 bg-white bg-opacity-10 rounded-2xl
             shadow-5xl relative z-2 border border-opacity-30 border-r-0
             border-b-0 backdrop-filter backdrop-blur-sm'>
                 <form action="" className='h-full flex flex-col justify-evenly items-center'>
                     <div
                         className='grid place-content-center
                         items-center text-center
-                        hover:text-left mb-4'
+                        hover:text-left'
                     >
                         <h1 className='text-white font-poppins text-2xl
                             tracking-widest'>
                             <PeopleIcon/> Информация о команде
                         </h1>
                     </div>
-                        {/*<div className='grid grid-flow-col auto-rows-max gap-4'>*/}
-                        <div className="">
+                        <div>
                             <label
                                 className="text-white font-poppins text-2xl
                             tracking-widest"
@@ -32,7 +31,7 @@ const TeamInfos = ({ formValues, onChange} ) => {
                                 onChange={onChange}
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"/>
                         </div>
-                        <div className="mb-2 row-span-2">
+                        <div>
                             <label
                                 className="text-white font-poppins text-2xl
                             tracking-widest"
@@ -47,7 +46,7 @@ const TeamInfos = ({ formValues, onChange} ) => {
                             />
                         </div>
 
-                    <div className="mb-2">
+                    <div>
                         <label
                             className="text-white font-poppins text-2xl
                             tracking-widest"
@@ -60,7 +59,7 @@ const TeamInfos = ({ formValues, onChange} ) => {
                             onChange={onChange}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"/>
                     </div>
-                    <div className="mb-2">
+                    <div>
                         <label
                             className="text-white font-poppins text-2xl
                             tracking-widest"
@@ -70,30 +69,6 @@ const TeamInfos = ({ formValues, onChange} ) => {
                             id='teamCity'
                             name='teamCity'
                             value={formValues.teamCity}
-                            onChange={onChange}
-                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"/>
-                    </div>
-                    <div className="mb-4">
-                        <label
-                            className="text-white font-poppins text-2xl
-                            tracking-widest"
-                            htmlFor="Patronymic">Состав команды и роли</label>
-                        <div
-                            className='text-white font-poppins text-sm
-                            tracking-widest'>
-                        Формат:
-                        <ul >
-                            <li>ИВАН ИВАНОВ: руководитель,</li>
-                            <li>ЕВГЕНИЙ ЕВГЕВИЧ: аналитик,</li>
-                            <li>Дональд Дональдович: дизайнер,</li>
-                            <li>...</li>
-                        </ul>
-                    </div>
-                        <textarea
-                            type='text'
-                            id='teamMembers'
-                            name='teamMembers'
-                            value={formValues.teamMembers}
                             onChange={onChange}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700"/>
                     </div>

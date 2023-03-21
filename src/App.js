@@ -22,6 +22,10 @@ import LichnyKabinet from "./components/LichnyKabinet/ParticipantPage/Participan
 import Members from "./components/LichnyKabinet/ParticipantPage/Members";
 import DownloadCase from "./components/LichnyKabinet/DownloadCase/DownloadCase";
 import UploadCase from "./components/LichnyKabinet/UploadCase/UploadDocument";
+import ProtectedRoutes from "./components/ProtectedRoutes/ProtectedRoutes";
+import ChatPage from "./components/LichnyKabinet/ChatPage/ChatPage";
+import ChatBot from "./components/LichnyKabinet/ChatBot/ChatBot";
+import ParticlesAuth from "./components/Particles/Particle/ParticleAuth";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -33,7 +37,12 @@ const router = createBrowserRouter(
             <Route path='graphic' element={<Schedule />}/>
             <Route path='register' element={<Participate />}/>
             <Route path='login' element={<Login />}/>
-            <Route path='lk' element={<LichnyKabinet />} />
+            <Route path='lk' element={<ProtectedRoutes><LichnyKabinet /></ProtectedRoutes>}/>
+            <Route path='download' element={<ProtectedRoutes><DownloadCase/></ProtectedRoutes>}/>
+            <Route path='send' element={<ProtectedRoutes><UploadCase/> </ProtectedRoutes>}/>
+            <Route path='members' element={<ProtectedRoutes><Members/> </ProtectedRoutes>}/>
+            <Route path='contactus' element={<ProtectedRoutes><ChatPage/> </ProtectedRoutes>}/>
+            <Route path='chatbot' element={<ProtectedRoutes><ChatBot/> </ProtectedRoutes>}/>
             <Route path='help' element={<HelpLayout/>}>
                 <Route path='faq' element={<FAQ/>}/>
                 <Route path='contact' element={<ContactUs/>}/>
@@ -47,7 +56,8 @@ function App() {
 
   return (
       <AuthContextProvider>
-          <ParticlesComponent />
+          {/*<ParticlesComponent />*/}
+          {/*<ParticlesAuth />*/}
           <RouterProvider router={router} />
       </AuthContextProvider>
   );

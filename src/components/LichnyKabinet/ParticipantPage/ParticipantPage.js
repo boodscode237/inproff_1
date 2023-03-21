@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { TbReportAnalytics } from "react-icons/tb";
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import { SocialIcon } from 'react-social-icons';
 import {
     RiLogoutBoxRFill,
@@ -13,18 +13,36 @@ import {FcSms, FcUpload, FcDownload} from 'react-icons/fc'
 import {MdWifiCalling} from 'react-icons/md'
 import {Button, Card, CardActions, CardContent, Grid, Paper} from "@mui/material"
 import Members from "./Members"
+import {useAuth} from "../../../context/AuthContext";
+import DownloadCase from "../DownloadCase/DownloadCase";
 
 
 export default function LichnyKabinet() {
+    const {user, logout} = useAuth()
+    const navigate = useNavigate()
+
+
+
+
+    const handleLogout = async () => {
+        try {
+            await logout()
+            navigate('/login')
+            console.log("You logged out")
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
     const menus = [
         { name: "Скачать Кейс", link: "/download", icon: FcDownload },
         { name: "Отправить работу", link: "/send", icon: FcUpload },
         { name: "Участники и роли", link: "/members", icon: TbReportAnalytics, margin: true },
         { name: "Связаться с нами", link: "/contactus", icon: MdWifiCalling },
         { name: "Чат-бот", link: "/chatbot", icon: FcSms },
-        { name: "Выход из системы", link: "/", icon: RiLogoutBoxRFill, margin: true },
+        { name: "Выход из системы", link: "/login", icon: RiLogoutBoxRFill, margin: true, action: handleLogout },
     ];
     const [open, setOpen] = useState(true);
+
     return (
         <section className="flex gap-6">
             <div
@@ -42,6 +60,7 @@ export default function LichnyKabinet() {
                 <div className="mt-4 flex flex-col gap-4 relative">
                     {menus?.map((menu, i) => (
                         <NavLink
+                            onClick={menu?.action}
                             to={menu?.link}
                             key={i}
                             className={` ${
@@ -83,7 +102,7 @@ export default function LichnyKabinet() {
                           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                     >
                         <Grid item xs={8}>
-                            <h1 className="text-white font-poppins text-2xl tracking-widest">{"Page title".toUpperCase()}</h1>
+                            <h1 className="text-white font-poppins text-2xl tracking-widest">{`Welcome: ${user && user.email}`.toUpperCase()}</h1>
                         </Grid>
                         <Grid item xs={12}>
                             <Members/>

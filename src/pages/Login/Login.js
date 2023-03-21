@@ -2,11 +2,12 @@ import Tilt from 'react-parallax-tilt';
 import {useAuth} from "../../context/AuthContext";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import ButtonComponent from "../../components/button/Button.Component";
 export default function Login() {
     const {login} = useAuth()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [error, setError] = useState()
+    const [error, setError] = useState("")
     const navigate = useNavigate()
     // const initialValues = {
     //     email: "",
@@ -18,20 +19,15 @@ export default function Login() {
     const handleSubmit = async(e) => {
         e.preventDefault()
 
-        setError()
+        setError("")
         await login(email, password).then((res) => {
-            console.log(res)
+            console.log('login',res)
             navigate('/lk')
         }).catch((err) => {
             setError(err.message)
-            // console.log(err.message)
+            alert(err.message)
         })
     }
-
-    // const onChange = (event) => {
-    //     const {values} = event.target;
-    //     setValues({...values})
-    // }
 
     return (
         <div className="login">
@@ -45,7 +41,10 @@ export default function Login() {
                             <div className='text-white font-poppins text-2xl tracking-widest'>Войти</div>
                             <input value={email} onChange={(e) => setEmail(e.target.value)} type={"email"} placeholder='username' className='input-text'/>
                             <input value={password} onChange={(e) => setPassword(e.target.value)} type={"password"} placeholder='password' className='input-text'/>
-                            <input type="submit" className='cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 '/>
+                            {/*<input type="submit" placeholder='вход в систему' className='cursor-pointer font-poppins rounded-full px-5 py-1 bg-white bg-opacity-50 hover:bg-white hover:bg-opacity-80 '/>*/}
+                            <div>
+                                <ButtonComponent handleClick={handleSubmit} arrow={<p>вход в систему</p>}/>
+                            </div>
                         </form>
                     </div>
                 </Tilt>
