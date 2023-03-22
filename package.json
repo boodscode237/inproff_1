@@ -17,6 +17,7 @@
     "react-icons": "^4.8.0",
     "react-parallax-tilt": "^1.7.109",
     "react-particles": "^2.9.3",
+    "react-pdf": "^6.2.2",
     "react-router-dom": "6.4",
     "react-scripts": "5.0.1",
     "react-social-icons": "^5.15.0",

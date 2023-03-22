@@ -73,7 +73,7 @@ main {
 .help-layout nav a:hover{
   border-color: var(--primary);
 }
-.help-layout nav a.active {
+.help-layout nav a.active, .active_navlink {
   background: var(--primary);
 }
 

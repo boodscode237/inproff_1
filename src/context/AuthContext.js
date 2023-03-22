@@ -12,7 +12,7 @@ import {
 } from "../utils/firebase/firebase-utils";
 import {
     collection,
-    addDoc, doc, setDoc
+    addDoc, doc, setDoc, getDocs
 } from "firebase/firestore";
 
 export const AuthContext = createContext()
@@ -20,6 +20,8 @@ export const useAuth = () => useContext(AuthContext)
 
 export const AuthContextProvider = ({children}) => {
     const [user, setUser] = useState()
+    const [usersData, setUsersData] = useState([])
+    const usersCollectionReference = collection(db, 'users')
     const [error, setError] = useState("")
     useEffect(() => {
         const currUser = auth.onAuthStateChanged((authUser) => {
@@ -28,6 +30,7 @@ export const AuthContextProvider = ({children}) => {
         //unsubscribe
         return currUser
     }, [])
+
 
 
     //signup

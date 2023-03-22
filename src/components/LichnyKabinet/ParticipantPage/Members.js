@@ -3,24 +3,8 @@ import {useEffect, useState} from "react";
 import {db} from "../../../utils/firebase/firebase-utils";
 import {collection, getDocs} from "firebase/firestore";
 import {useAuth} from "../../../context/AuthContext";
-function createData(participant, role, fat, carbs, protein) {
-    return { participant, role, fat, carbs, protein };
-}
+import LichnyKabinet from "./ParticipantPage";
 
-const rows = [
-    createData('Rodion Dmitriev', 'генеральный директор'),
-    createData('Nadya Kulikova', 'Директор по маркетингу'),
-    createData('Директор по связям с общественностью', 'молодой специалист'),
-    createData('Бухгалтер', 'Сотрудник по персоналу'),
-    createData('Radinka Grigoreva', 'Программист'),
-];
-const Item = styled(Paper)(({ theme }) => ({
-    ...theme.typography.body2,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    height: 60,
-    lineHeight: '60px',
-}));
 
 export default function Members(){
     const {user} = useAuth()
@@ -31,7 +15,8 @@ export default function Members(){
         const getUsers = async () => {
             const data = await getDocs(usersCollectionReference)
             setUsersData(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-            console.log('usersData', data.docs)
+
+            console.log('usersData', usersData)
             const names = []
             usersData.forEach(x => {
                 const members = x.teamMembers
@@ -39,41 +24,29 @@ export default function Members(){
             })
             console.log(names[0])
 
-            // console.log(i[0].split(',\n')[0].split(': ')) ==> output: [ "ИВАН ИВАНОВ", "руководитель" ]
-            // console.log(user.email)
         }
         getUsers()
     }, [])
-    const names = []
-    usersData.forEach(x => {
-        const members = x.teamMembers
-        names.push(members)
+    const person = []
+    usersData.forEach(element => {
+        const {id, userId} = element
+        console.log('user-element', element.user)
+        console.log(id, userId)
+        if(userId === user.uid ){
+            const {teamMembers} = element
+            person.push(teamMembers)
+        }
     })
+    console.log('person', person)
+    console.log('person1', person[0].split(',\n'))
+    function createData(name, role) {
+        return { name, role };
+    }
+    const rows = []
+    const membersDetails = person[0].split(',\n')
+
     return(
-        <div>
-            {/*<TableContainer component={Paper}>*/}
-            {/*    <Table sx={{ minWidth: 650 }} aria-label="simple table">*/}
-            {/*        <TableHead>*/}
-            {/*            <TableRow>*/}
-            {/*                <TableCell>Участники</TableCell>*/}
-            {/*                <TableCell align="right">Роли</TableCell>*/}
-            {/*            </TableRow>*/}
-            {/*        </TableHead>*/}
-            {/*        <TableBody>*/}
-            {/*            {rows.map((row) => (*/}
-            {/*                <TableRow*/}
-            {/*                    key={row.participant}*/}
-            {/*                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}*/}
-            {/*                >*/}
-            {/*                    <TableCell component="th" scope="row">*/}
-            {/*                        {row.participant}*/}
-            {/*                    </TableCell>*/}
-            {/*                    <TableCell align="right">{row.role}</TableCell>*/}
-            {/*                </TableRow>*/}
-            {/*            ))}*/}
-            {/*        </TableBody>*/}
-            {/*    </Table>*/}
-            {/*</TableContainer>*/}
+        <LichnyKabinet>
             <Box
                 sx={{
                     p: 2,
@@ -85,10 +58,10 @@ export default function Members(){
             >
                 <div >
                     {
-                       names[0]
+                        person
                     }
                 </div>
             </Box>
-        </div>
+        </LichnyKabinet>
     )
 }

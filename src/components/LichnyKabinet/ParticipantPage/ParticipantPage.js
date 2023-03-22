@@ -11,13 +11,15 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import PublishIcon from '@mui/icons-material/Publish';
 import {FcSms, FcUpload, FcDownload} from 'react-icons/fc'
 import {MdWifiCalling} from 'react-icons/md'
-import {Button, Card, CardActions, CardContent, Grid, Paper} from "@mui/material"
+import {Button, Card, CardActions, CardContent, Container, Grid, Paper, styled, Typography} from "@mui/material"
 import Members from "./Members"
 import {useAuth} from "../../../context/AuthContext";
 import DownloadCase from "../DownloadCase/DownloadCase";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 
 
-export default function LichnyKabinet() {
+export default function LichnyKabinet({children}) {
     const {user, logout} = useAuth()
     const navigate = useNavigate()
 
@@ -93,104 +95,25 @@ export default function LichnyKabinet() {
                     ))}
                 </div>
             </div>
-            <div >
+            <Container >
                 <div
-                    className='App bg-gray-900 h-screen px-2 w-fit relative
-                    overflow-hidden flex justify-center items-center'
+                    className=''
                 >
-                    <Grid container rowSpacing={1}
+                    <Grid container spacing={1}
                           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                     >
-                        <Grid item xs={8}>
-                            <h1 className="text-white font-poppins text-2xl tracking-widest">{`Welcome: ${user && user.email}`.toUpperCase()}</h1>
+                        <Grid item xs={12}>
+                            <Typography variant='h2' className="text-white font-poppins text-2xl tracking-widest">{`Welcome: ${user && user.email}`.toUpperCase()}</Typography>
                         </Grid>
                         <Grid item xs={12}>
-                            <Members/>
-                        </Grid>
-                        <Grid item container xs={12} rowSpacing={1}
-                              columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                            <Grid container item xs={6}>
-                                <Grid item xs={12} rowSpacing={1}
-                                      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                    <Card sx={{ minWidth: 275 }}>
-                                        <CardContent>
-                                            <Button variant="contained">Скачать Кейс <FileDownloadIcon fontSize='large' /></Button>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                                <Grid item xs={12} rowSpacing={1}
-                                      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                    <Card sx={{ minWidth: 275 }}>
-                                        <CardContent>
-                                            <Button variant="contained">Отправить решении кейса <PublishIcon size='large' color='primary'/></Button>
-                                        </CardContent>
-                                    </Card>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={6}>
-                                <Grid container spacing={1} rowSpacing={1}
-                                      columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                    <Grid xs={6} item container rowSpacing={1}
-                                          columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                        <Grid xs={6} item container rowSpacing={1}
-                                              columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                            <Grid item xs={6}>
-                                                <Paper sx={{
-                                                    height: 100,
-                                                    textAlign: 'center',
-                                                    width: 100,
-                                                    backgroundColor: (theme) =>
-                                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                                }}>
-                                                    <SocialIcon url={'https://github.com/boodscode237'}/>
-                                                </Paper>
-                                            </Grid>
-                                            <Grid item xs={6}>
-                                                <Paper sx={{
-                                                    height: 100,
-                                                    textAlign: 'center',
-                                                    width: 100,
-                                                    backgroundColor: (theme) =>
-                                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                                }}>
-                                                    <SocialIcon url={'https://twitter.com/LiubliuYa'}/>
-                                                </Paper>
-                                            </Grid>
-                                        </Grid>
-                                        <Grid xs={6} item container rowSpacing={1}
-                                              columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                                            <Grid item xs={6}>
-                                                <Paper sx={{
-                                                    height: 100,
-                                                    textAlign: 'center',
-                                                    width: 100,
-                                                    backgroundColor: (theme) =>
-                                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                                }}>
-                                                    <SocialIcon url={'https://www.linkedin.com/in/brice-abodo-7995061b0'}/>
-                                                </Paper>
-                                            </Grid>
-                                            <Grid item xs={6}>
-                                                <Paper sx={{
-                                                    height: 100,
-                                                    textAlign: 'center',
-                                                    width: 100,
-                                                    backgroundColor: (theme) =>
-                                                        theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                                                }}>
-                                                    <SocialIcon url={'https://www.facebook.com/don.bri.965'}/>
-                                                </Paper>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-
+                            {children}
                         </Grid>
 
                     </Grid>
+
+
                 </div>
-            </div>
+            </Container>
         </section>
     )
 }
