@@ -44,7 +44,7 @@ export default function DownloadCase(){
     const listRef = ref(storage, `work`);
     getDownloadURL(listRef)
         .then((url) => {
-            console.log(url)
+            // console.log(url)
             setFile(url)
         })
         .catch((error) => {

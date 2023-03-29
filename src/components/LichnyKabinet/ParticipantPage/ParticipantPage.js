@@ -103,7 +103,7 @@ export default function LichnyKabinet({children}) {
                           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                     >
                         <Grid item xs={12}>
-                            <Typography variant='h2' className="text-white font-poppins text-2xl tracking-widest">{`Welcome: ${user && user.email}`.toUpperCase()}</Typography>
+                            <Typography variant='h4' className="text-white font-poppins text-2xl tracking-widest">{`Welcome: ${user && user.email}`.toUpperCase()}</Typography>
                         </Grid>
                         <Grid item xs={12}>
                             {children}
