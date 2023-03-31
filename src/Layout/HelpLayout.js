@@ -3,12 +3,12 @@ import {NavLink, Outlet} from "react-router-dom";
 export default function HelpLayout() {
     return (
         <div className="help-layout">
-            <h2>Help</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, ea.</p>
+            <h2>Помощь</h2>
+            <p>Мы рекомендуем вам связаться с нами через наши официальные адреса электронной почты и учетные записи, так как форма еще не работает.</p>
 
             <nav>
-                <NavLink to="faq">View the FAQ</NavLink>
-                <NavLink to="contact">Contact Us</NavLink>
+                <NavLink to="faq">Просмотр часто задаваемых вопросов</NavLink>
+                <NavLink to="contact">Cвязаться с нами</NavLink>
             </nav>
 
             <Outlet />

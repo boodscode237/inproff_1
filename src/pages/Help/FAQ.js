@@ -1,32 +1,23 @@
 export default function FAQ() {
     return (
         <div className="faq">
-            <h3>Frequently Asked Questions</h3>
+            <h3>Часто задаваемые вопросы</h3>
 
             <div className="question">
-                <p><strong>Lorem ipsum dolor sit amet.</strong></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, recusandae doloribus qui molestias similique asperiores incidunt. Obcaecati tenetur consectetur dolorem eius ex, ad, laudantium inventore quia odio minus eligendi ipsa?</p>
+                <p><strong>не могу войти в свой аккаунт:</strong></p>
+                <p>Если ваш пароль и адрес электронной почты для входа неверны, попробуйте еще раз один или два раза. Это может случиться. Если нет, свяжитесь с разработчиком по адресу a_vrv@list.ru</p>
             </div>
 
             <div className="question">
-                <p><strong>Lorem ipsum dolor sit amet.</strong></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, recusandae doloribus qui molestias similique asperiores incidunt. Obcaecati tenetur consectetur dolorem eius ex, ad, laudantium inventore quia odio minus eligendi ipsa?</p>
+                <p><strong>Не могу скачать кейс:</strong></p>
+                <p>Связаться с разработчиком</p>
             </div>
 
             <div className="question">
-                <p><strong>Lorem ipsum dolor sit amet.</strong></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, recusandae doloribus qui molestias similique asperiores incidunt. Obcaecati tenetur consectetur dolorem eius ex, ad, laudantium inventore quia odio minus eligendi ipsa?</p>
+                <p><strong>Я удалил свою работу и хотел бы знать, сохранили ли вы ее.</strong></p>
+                <p>Мы не сохраняем удаленные работы. Так что будьте осторожны, удаляя свою работу.</p>
             </div>
 
-            <div className="question">
-                <p><strong>Lorem ipsum dolor sit amet.</strong></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, recusandae doloribus qui molestias similique asperiores incidunt. Obcaecati tenetur consectetur dolorem eius ex, ad, laudantium inventore quia odio minus eligendi ipsa?</p>
-            </div>
-
-            <div className="question">
-                <p><strong>Lorem ipsum dolor sit amet.</strong></p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, recusandae doloribus qui molestias similique asperiores incidunt. Obcaecati tenetur consectetur dolorem eius ex, ad, laudantium inventore quia odio minus eligendi ipsa?</p>
-            </div>
 
         </div>
     )

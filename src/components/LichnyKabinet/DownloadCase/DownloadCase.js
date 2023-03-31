@@ -1,7 +1,6 @@
 import LichnyKabinet from "../ParticipantPage/ParticipantPage";
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import DownloadIcon from '@mui/icons-material/Download';
 import {
     Button,
     Card,
@@ -11,31 +10,21 @@ import {
     Grid,
     Paper,
     styled, Typography,
-    useTheme
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
-import DeleteIcon from "@mui/icons-material/Delete";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import {getDownloadURL, getStorage, ref} from "firebase/storage";
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import {useState} from "react";
 import {useAuth} from "../../../context/AuthContext";
-
-const Item = styled(Paper)(({ theme }) => ({
+styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
-function handleDelete(listRef) {
-    
-}
-
-
-
 export default function DownloadCase(){
     const [file, setFile] = useState("")
     const {user} = useAuth()
@@ -52,10 +41,6 @@ export default function DownloadCase(){
         });
     function handleOpen(file) {
         window.open(file, "_blank");
-    }
-
-    function handleDelete(listRef) {
-
     }
     return(
         <LichnyKabinet>

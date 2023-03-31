@@ -56,7 +56,7 @@ function App() {
 
   return (
       <AuthContextProvider>
-          <ParticlesComponent />
+          {/*<ParticlesComponent />*/}
           {/*<ParticlesAuth />*/}
           <RouterProvider router={router} />
       </AuthContextProvider>
