@@ -23,11 +23,11 @@ export default function News() {
         getNews().then(data => {
             console.log('News data fetched')
         })
-    })
+    }, [])
     return (
         <React.Fragment>
             <Container>
-                <Box sx={{ bgcolor: '##559db8', height: '100vh' }}>
+                <Box sx={{ bgcolor: '##559db8', height: '90vh' }}>
                     <Grid container spacing={2}>
                         <Typography variant="h2" component="h1">
                             Новости
@@ -42,7 +42,8 @@ export default function News() {
 
                                 <Grid container spacing={24}
                                       justify="center"
-                                      style={{ minHeight: '100vh', maxWidth: '100%' }}>
+                                      sx={{ height: '90vh', width: '100%' }}
+                                    >
                                     <Grid item container xs={12}
                                           justify="center"
                                     >

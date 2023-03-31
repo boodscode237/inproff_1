@@ -28,22 +28,18 @@ export default function Home() {
     const [description, setDescription] = useState('')
     const [goals, setGoals] = useState([])
     const [photos, setPhotos] = useState([])
+    const getInfos = async() => {
+        const data = await getDocs(newsCollectionRef)
+        setElement(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+        setBanner(element[0].banner)
+        setDescription(element[0].description)
+        setGoals(element[0].goals)
+        setPhotos(element[0].photos)
 
+    }
     useEffect(() => {
-        const getNews = async() => {
-            const data = await getDocs(newsCollectionRef)
-            setElement(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-            setBanner(element[0].banner)
-            setDescription(element[0].description)
-            setGoals(element[0].goals)
-            setPhotos(element[0].photos)
-
-        }
-
-        getNews().then(data => {
-            console.log('Home data fetched')
-        })
-    })
+        getInfos()
+    }, [element])
     return (
             <React.Fragment>
                 <Container>
